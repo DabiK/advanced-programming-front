@@ -29,5 +29,10 @@
     "login": "S'identifier",
     "submit": "S'inscrire"
   },
-  "signup-account-created": "Votre compte a été créé"
+  "signup-account-created": "Votre compte a été créé",
+  "navbar": {
+    "home": "Accueil",
+    "logout": "Se déconnecter",
+    "profil": "Profil"
+  }
 }

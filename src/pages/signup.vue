@@ -31,7 +31,7 @@ import { pages, pagesPath } from '~/utils/page';
 
 @Component({
     name: 'Signup',
-    layout: pages.LAYOUT_WITH_NAVBAR,
+    layout: pages.LAYOUT_LOGIN,
     components: {
         SignupForm,
         LoginPageRightImage,

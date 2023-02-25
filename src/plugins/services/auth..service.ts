@@ -5,7 +5,9 @@ export class AuthService {
     static users = [
         {
             email: 'toto@gmail.com',
-            password: 'toto',
+            firstName: 'toto',
+            lastName: 'titi',
+            phoneNumber: '09089898989',
         },
     ];
     async login(credential: LoginCredential): Promise<string | undefined> {

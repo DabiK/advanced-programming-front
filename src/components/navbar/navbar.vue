@@ -1,24 +1,37 @@
 <template>
-    <v-navigation-drawer v-model="display" class="navbar" absolute temporary>
-        <v-list nav dense>
-            <v-list-item class="navbar-list-item">
-                <nuxt-link to="/home">
-                    <v-list-item-icon>
-                        <v-icon large color="white" class="navbar-icon">mdi-home</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-title class="white--text">{{ $t('page.header.home') }}</v-list-item-title>
-                </nuxt-link>
-            </v-list-item>
-            <v-list-item class="navbar-list-item">
-                <nuxt-link to="/automations">
-                    <v-list-item-icon>
-                        <v-icon large color="white" class="navbar-icon">mdi-home</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-title class="white--text">{{ $t('page.header.automations') }}</v-list-item-title>
-                </nuxt-link>
-            </v-list-item>
-        </v-list>
-    </v-navigation-drawer>
+    <div>
+        <!-- <v-app-bar-nav-icon class="navbar-toogle-icon" @click="drawer = true"></v-app-bar-nav-icon> -->
+        <v-navigation-drawer class="navbar" permanent>
+            <v-list class="px-0" nav dense>
+                <v-list-item class="navbar-list-item" to="/home">
+                    <v-list-item-content>
+                        <v-list-item-title class="white--text">{{ $t('navbar.home') }}</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+
+                <v-list-item class="navbar-list-item" to="/home">
+                    <v-list-item-content>
+                        <v-list-item-title class="white--text">{{ $t('navbar.profil') }}</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+
+                <v-list-item class="navbar-list-item" @click="logout">
+                    <v-list-item-content>
+                        <v-list-item-title class="white--text">{{ $t('navbar.logout') }}</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+
+                <v-list-item class="navbar-list-item avatar-container" @click="logout">
+                    <v-list-item-content>
+                        <p class="white--text">{{ name }}</p>
+                        <v-avatar class="avatar mt-2" color="brown">
+                            <span class="text-h5">{{ initials }}</span>
+                        </v-avatar>
+                    </v-list-item-content>
+                </v-list-item>
+            </v-list>
+        </v-navigation-drawer>
+    </div>
 </template>
 
 <script lang="ts">
@@ -31,20 +44,21 @@ import { USER_STATE_NAME } from '~/store/user-state';
 export default class Navbar extends Vue {
     userState!: any;
     mini: Boolean = true;
-    @Prop({
-        default: false,
-    })
-    display!: boolean;
+    drawer = false;
     mounted() {
         this.userState = this.$store.state[USER_STATE_NAME];
     }
 
-    get imgUrl() {
-        return this.$store.state[USER_STATE_NAME]?.user.picture;
+    logout() {}
+
+    get name() {
+        return `${this.$store.state[USER_STATE_NAME]?.user.firstName} ${this.$store.state[USER_STATE_NAME]?.user.lastName} `;
     }
 
-    get email() {
-        return this.$store.state[USER_STATE_NAME]?.user.email;
+    get initials() {
+        return `${this.$store.state[USER_STATE_NAME]?.user.firstName[0].toUpperCase()}${this.$store.state[
+            USER_STATE_NAME
+        ]?.user.lastName[0].toUpperCase()} `;
     }
 }
 </script>
@@ -59,6 +73,15 @@ export default class Navbar extends Vue {
 
     .navbar-list-item {
         padding-left: 0px;
+        text-align: center;
+        width: 100%;
+        border-radius: 0px;
+        margin-bottom: 0px;
+        border-bottom: 1px solid white;
+    }
+
+    .avatar-container {
+        border-bottom: none !important;
     }
     .navbar-icon {
         padding-left: 0px;
@@ -66,6 +89,12 @@ export default class Navbar extends Vue {
 
     &:hover {
         background-color: red;
+    }
+
+    .avatar {
+        width: 50px;
+        height: 50px;
+        max-width: 50px;
     }
 }
 
@@ -75,8 +104,15 @@ export default class Navbar extends Vue {
 </style>
 
 <style lang="scss">
+.v-navigation-drawer {
+    width: 200px !important;
+    align-self: center;
+}
 .v-navigation-drawer__content {
     display: flex !important;
-    align-items: center !important;
+    width: 100%;
+    align-items: end !important;
+    padding-bottom: 50px;
+    justify-content: center;
 }
 </style>
