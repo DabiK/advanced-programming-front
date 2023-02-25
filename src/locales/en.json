@@ -1,0 +1,33 @@
+{
+  "login": {
+    "welcome": "Sign in",
+    "description": "Please enter your details ! ",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Login",
+    "dont-have-account": "Don’t have an account ?",
+    "create-account": "Sign up",
+    "signin": "Sign in",
+    "manage-your-students": "Manage your students",
+    "signup": "Create an account",
+    "confirm-password": "Confirm Password"
+  },
+  "form-error": {
+    "empty-input": "This input should not be empty",
+    "incorrect-email-input": "This field has to be an email",
+    "incorrect-confirm-password": "Confirm password and password has to be identical"
+  },
+  "errors": {
+    "invalid-credential": "Invalid email or password ",
+    "registration-failed": "Account creation failed please try later"
+  },
+  "signup": {
+    "signup": "Create an account",
+    "description": "Please enter your details ! ",
+    "password-rule": "Password has to meet these requirements: 8 characters minimum, one lowercase, one uppercase,one symbol,one number",
+    "have-account": "Already have an account ?",
+    "login": "Sign in",
+    "submit": "Sign up"
+  },
+  "signup-account-created": "Your account has been created"
+}

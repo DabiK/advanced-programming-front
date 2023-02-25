@@ -1,0 +1,29 @@
+@import '~vuetify/src/styles/styles.sass';
+@import './variables.scss';
+
+.base-btn{
+    border-radius: 37px !important;
+    width: 100%;
+    margin: 10px 10px 10px 0px;
+    border: solid 1px $stroke-color;
+    &.white{
+        background-color: white;
+    }
+
+    &.big{
+        height: 50px !important;
+    }
+}
+
+.text-btn {
+    cursor: pointer !important;
+    color: var(--v-primary-base) !important;
+}
+
+.v-navigation-drawer--open{
+    width: 56px !important;
+}
+
+.v-text-field{
+    border-radius: 13px !important;
+}

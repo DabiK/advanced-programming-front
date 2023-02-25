@@ -1,0 +1,33 @@
+{
+  "login": {
+    "welcome": "S'identifier",
+    "description": "Veuillez saisir vos coordonnées !",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "submit": "Connexion",
+    "dont-have-account": "Vous n'avez pas de compte ?",
+    "create-account": "S'inscrire",
+    "signin": "S'autentifier",
+    "manage-your-students": "Gérez vos élèves",
+    "signup": "Créer un compte",
+    "confirm-password": "Confirmez le mot de passe"
+  },
+  "form-error": {
+    "empty-input": "Cette entrée ne doit pas être vide",
+    "incorrect-email-input": "Ce champ doit être un email",
+    "incorrect-confirm-password": "Confirmer le mot de passe et le mot de passe doit être identique"
+  },
+  "errors": {
+    "invalid-credential": "",
+    "registration-failed": "La création du compte a échoué, veuillez réessayer plus tard"
+  },
+  "signup": {
+    "signup": "Créer un compte",
+    "description": "Veuillez saisir vos coordonnées !",
+    "password-rule": "Le mot de passe doit répondre à ces exigences : 8 caractères minimum, une minuscule, une majuscule, un symbole, un chiffre",
+    "have-account": "Vous avez déjà un compte ?",
+    "login": "S'identifier",
+    "submit": "S'inscrire"
+  },
+  "signup-account-created": "Votre compte a été créé"
+}
