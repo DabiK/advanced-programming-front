@@ -9,7 +9,6 @@ export const USER_STATE_NAME = 'user-state';
 })
 export class UserState extends VuexModule {
     user: User = {};
-
     token: string = '';
     @Action
     updateToken(token: string) {

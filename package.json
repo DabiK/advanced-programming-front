@@ -25,6 +25,7 @@
         "nuxt-property-decorator": "^2.9.1",
         "perf_hooks": "^0.0.1",
         "tls": "^0.0.1",
+        "uuid": "^9.0.0",
         "v-jsoneditor": "^1.4.5",
         "vue": "^2.7.14",
         "vue-apexcharts": "^1.6.2",

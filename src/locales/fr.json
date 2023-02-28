@@ -41,5 +41,22 @@
     "student-list": "Liste de mes étudiants",
     "see-archived-student": "Voir les étudiants archivés",
     "hide-archived-student": "Masquer les étudiants archivés"
+  },
+  "add-intern": {
+    "form": {
+      "email": "E-mail",
+      "firstname": "Prénom",
+      "lastname": "Nom de famille",
+      "phone-number": "Numéro de téléphone",
+      "create": "Créer",
+      "select-image": "Sélectionner une image",
+      "picture": "Photo d'étudiant",
+      "class": "Classe"
+    }
+  },
+  "student-add": {
+    "title": "Ajouter un stagiaire",
+    "student-created": "L'élève {name} a été créé",
+    "student-created-failed": "L'étudiant {name} n'a pas été créé, veuillez réessayer plus tard"
   }
 }
