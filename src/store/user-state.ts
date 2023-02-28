@@ -30,8 +30,4 @@ export class UserState extends VuexModule {
     private setUser(user: User) {
         this.user = user;
     }
-
-    get userProfilPic() {
-        return this.user.picture;
-    }
 }

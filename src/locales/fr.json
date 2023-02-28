@@ -34,5 +34,12 @@
     "home": "Accueil",
     "logout": "Se déconnecter",
     "profil": "Profil"
+  },
+  "home": {
+    "welcome": "Bienvenue sur le portail des tuteurs",
+    "notifications": "Notifications",
+    "student-list": "Liste de mes étudiants",
+    "see-archived-student": "Voir les étudiants archivés",
+    "hide-archived-student": "Masquer les étudiants archivés"
   }
 }

@@ -1,5 +1,5 @@
 import { LoginCredential } from '~/models/login/credential.model';
-import { SignupCredential } from '~/models/login/signup.model.ts';
+import { SignupCredential } from '~/models/login/signup.model';
 
 export class AuthService {
     static users = [

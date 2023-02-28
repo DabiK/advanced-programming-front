@@ -2,7 +2,7 @@
     <div>
         <!-- <v-app-bar-nav-icon class="navbar-toogle-icon" @click="drawer = true"></v-app-bar-nav-icon> -->
         <v-navigation-drawer class="navbar" permanent>
-            <v-list class="px-0" nav dense>
+            <v-list class="list-container px-0" nav dense>
                 <v-list-item class="navbar-list-item" to="/home">
                     <v-list-item-content>
                         <v-list-item-title class="white--text">{{ $t('navbar.home') }}</v-list-item-title>
@@ -71,6 +71,14 @@ export default class Navbar extends Vue {
     border-bottom-right-radius: 40px;
     position: fixed;
 
+    @media #{map-get($display-breakpoints, 'md-and-down')} {
+        display: none;
+    }
+
+    .list-container {
+        width: 100%;
+    }
+
     .navbar-list-item {
         padding-left: 0px;
         text-align: center;
@@ -82,6 +90,10 @@ export default class Navbar extends Vue {
 
     .avatar-container {
         border-bottom: none !important;
+        .v-list-item__content {
+            display: flex !important;
+            justify-content: center !important;
+        }
     }
     .navbar-icon {
         padding-left: 0px;

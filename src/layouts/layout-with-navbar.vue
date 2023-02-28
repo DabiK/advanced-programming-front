@@ -38,10 +38,12 @@ export default class LayoutWithNavbar extends Vue {
 
 .main-container {
     margin-left: 260px;
+    width: 80%;
 }
 @media #{map-get($display-breakpoints, 'md-and-down')} {
     .main-container {
         width: 100%;
+        margin-left: 0px;
     }
 }
 </style>
