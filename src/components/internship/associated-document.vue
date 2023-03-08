@@ -16,7 +16,7 @@
             </v-chip>
 
             <div v-if="isSoutenanceDocument" class="document-detail-container">
-                <div class="border big" :class="soutenanceDone ? 'done' : 'not-done'"></div>
+                <div class="border soutenance" :class="soutenanceDone ? 'done' : 'not-done'"></div>
                 <v-row>
                     <v-col cols="12">
                         <h4 class="mb-2">{{ $t('internships.documents.form.date') }}</h4>
@@ -27,50 +27,55 @@
                         <v-text-field v-model="soutenance.technicalMark" type="number" solo></v-text-field>
                     </v-col>
                     <v-col cols="4">
-                        <h4 class="mb-2">{{ $t('internships.documents.form.presentation-grade') }}</h4>
-                        <v-text-field v-model="soutenance.presentationMark" type="number" solo></v-text-field>
+                        <h4 class="mb-2">{{ $t('internships.documents.form.communication-grade') }}</h4>
+                        <v-text-field v-model="soutenance.communicationMark" type="number" solo></v-text-field>
                     </v-col>
 
                     <v-col cols="4">
-                        <h4 class="mb-2">{{ $t('internships.documents.form.global-grade') }}</h4>
-                        <v-text-field v-model="soutenance.globalMark" type="number" solo></v-text-field>
+                        <h4 class="mb-2">{{ $t('internships.documents.form.tutor-grade') }}</h4>
+                        <v-text-field v-model="soutenance.tutorNote" type="number" solo></v-text-field>
                     </v-col>
-                    <v-btn class="base-btn primary" @click="lockSoutenance">{{
+                    <v-btn v-if="!soutenanceDone" class="base-btn primary" @click="lockSoutenance">{{
                         $t('internships.documents.form.submit')
                     }}</v-btn>
                 </v-row>
             </div>
 
             <div v-if="isReportDocument" class="document-detail-container">
-                <div class="border small" :class="reportDone ? 'done' : 'not-done'"></div>
+                <div class="border report" :class="reportDone ? 'done' : 'not-done'"></div>
                 <v-row>
                     <v-col cols="4">
                         <h4 class="mb-2">{{ $t('internships.documents.form.technical-grade') }}</h4>
-                        <v-text-field type="number" solo></v-text-field>
+                        <v-text-field v-model="report.technicalMark" type="number" solo></v-text-field>
                     </v-col>
                     <v-col cols="4">
-                        <h4 class="mb-2">{{ $t('internships.documents.form.presentation-grade') }}</h4>
-                        <v-text-field type="number" solo></v-text-field>
+                        <h4 class="mb-2">{{ $t('internships.documents.form.communication-grade') }}</h4>
+                        <v-text-field v-model="report.communicationMark" type="number" solo></v-text-field>
                     </v-col>
 
                     <v-col cols="4">
-                        <h4 class="mb-2">{{ $t('internships.documents.form.global-grade') }}</h4>
-                        <v-text-field type="number" solo></v-text-field>
+                        <h4 class="mb-2">{{ $t('internships.documents.form.tutor-grade') }}</h4>
+                        <v-text-field v-model="report.tutorNote" type="number" solo></v-text-field>
                     </v-col>
-                    <v-btn class="base-btn primary" @click="lockReport">{{
+                    <v-btn v-if="!reportDone" class="base-btn primary" @click="lockReport">{{
                         $t('internships.documents.form.submit')
                     }}</v-btn>
                 </v-row>
             </div>
 
             <div v-if="isVisitDocument" class="document-detail-container">
-                <div class="border" :class="visitDone ? 'done' : 'not-done'"></div>
+                <div class="border visit" :class="visitDone ? 'done' : 'not-done'"></div>
                 <v-row>
                     <v-col cols="12">
                         <h4 class="mb-2">{{ $t('internships.documents.form.date') }}</h4>
                         <v-date-picker no-title v-model="dateOfVisit"></v-date-picker>
                     </v-col>
-                    <v-btn class="base-btn primary" @click="lockVisit">{{
+                    <v-col cols="12">
+                        <h4 class="mb-2">{{ $t('internships.documents.form.note') }}</h4>
+                        <v-textarea v-model="visit.schoolTutorNote" type="number" solo></v-textarea>
+                    </v-col>
+
+                    <v-btn v-if="!visitDone" class="base-btn primary" @click="lockVisit">{{
                         $t('internships.documents.form.submit')
                     }}</v-btn>
                 </v-row>
@@ -163,7 +168,7 @@ export default class AssociatedDocument extends Vue {
     }
 
     get dateOfSoutenance() {
-        return this.soutenance.dateOfSoutenance?.toISOString().substr(0, 10);
+        return this.soutenance.dateOfSoutenance?.toISOString().substr(0, 10) || new Date().toISOString().substr(0, 10);
     }
 
     set dateOfSoutenance(date: string) {
@@ -171,7 +176,7 @@ export default class AssociatedDocument extends Vue {
     }
 
     get dateOfVisit() {
-        return this.visit.dateOfVisit?.toISOString().substr(0, 10);
+        return this.visit.dateOfVisit?.toISOString().substr(0, 10) || new Date().toISOString().substr(0, 10);
     }
 
     set dateOfVisit(date: string) {
@@ -239,14 +244,17 @@ export default class AssociatedDocument extends Vue {
         left: 0px;
         border-radius: 20px;
 
-        &.big {
-            height: 500px;
-        }
-
-        &.small {
+        &.report {
             height: 150px;
         }
 
+        &.visit {
+            height: 550px;
+        }
+
+        &.soutenance {
+            height: 430px;
+        }
         &.done {
             background-color: #b1ffcc;
         }

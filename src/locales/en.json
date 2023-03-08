@@ -74,14 +74,22 @@
       "visit": "Visit",
       "form": {
         "date": "Date",
-        "technical-grade": "Technical grade",
+        "technical-grade": "Technical mark",
         "presentation-grade": "Presentation grade",
         "global-grade": "Global grade",
         "school-tutor-note": "School tutor note",
         "company-tutor-note": "Company tutor note",
         "student-note": "Student note",
-        "submit": "Lock and validate"
+        "submit": "Lock and validate",
+        "tutor-grade": "Tutor mark",
+        "communication-grade": "Communication mark",
+        "note": "Note"
       }
+    },
+    "todo": {
+      "title": "Todo",
+      "subtitle": "Task to do, check or valid with {name}",
+      "web-survey": "Web survey"
     }
   }
 }

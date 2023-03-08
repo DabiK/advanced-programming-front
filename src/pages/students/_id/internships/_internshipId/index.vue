@@ -28,14 +28,14 @@
                 <h1 class="mb-2 mt-5">
                     {{
                         $t('internships.title', {
-                            company: internship.company.name,
+                            company: internship.company?.name,
                         })
                     }}
                 </h1>
                 <p>
                     {{
                         $t('internships.details.name', {
-                            name: internship.company.name,
+                            name: internship.company?.name,
                         })
                     }}
                 </p>
@@ -43,7 +43,7 @@
                 <p>
                     {{
                         $t('internships.details.company-address', {
-                            address: internship.company.address,
+                            address: internship.company?.address,
                         })
                     }}
                 </p>
@@ -73,6 +73,35 @@
                     :reportProp="report"
                     :visitProp="visit"
                 />
+
+                <h2 class="mt-5">{{ $t('internships.todo.title') }}</h2>
+                <p>
+                    {{
+                        $t('internships.todo.subtitle', {
+                            name: `${student.firstName} ${student.lastName}`,
+                        })
+                    }}
+                </p>
+
+                <div>
+                    <v-list lines="three" select-strategy="classic">
+                        <v-list-item :class="visit.webSurveyDone ? 'todo-active' : ''">
+                            <template v-slot:default>
+                                <v-list-item-action>
+                                    <v-checkbox v-model="visit.webSurveyDone"></v-checkbox>
+                                </v-list-item-action>
+
+                                <v-list-item-content>
+                                    <v-list-item-title
+                                        ><p :class="visit.webSurveyDone ? 'text-decoration-line-through' : ''">
+                                            {{ $t('internships.todo.web-survey') }}
+                                        </p></v-list-item-title
+                                    >
+                                </v-list-item-content>
+                            </template>
+                        </v-list-item>
+                    </v-list>
+                </div>
             </div>
         </div>
     </div>
@@ -107,17 +136,17 @@ export default class InternshipDetails extends Vue {
     @Inject({
         default: {},
     })
-    soutenance!: Soutenance | undefined;
+    soutenance!: Soutenance;
 
     @Inject({
         default: {},
     })
-    report!: Report | undefined;
+    report!: Report;
 
     @Inject({
         default: {},
     })
-    visit!: Visit | undefined;
+    visit!: Visit;
 
     @Inject({
         default: {},
@@ -138,7 +167,6 @@ export default class InternshipDetails extends Vue {
 
         await this.fetchStudent(studentId);
         await this.fetchInternship(studentId, internshipId);
-        await this.fetchAssociatedDocuments(internshipId);
         this.appState.updateLoading(false);
     }
 
@@ -153,26 +181,19 @@ export default class InternshipDetails extends Vue {
     async fetchInternship(studentId: string, internshipId: string) {
         try {
             this.internship = await this.$service.internship.getStudentInternship(studentId, internshipId);
+            this.report = this.internship.report || {};
+            this.visit = this.internship.visit || {};
+            this.soutenance = this.internship.soutenance || {};
         } catch (err) {
             console.debug(err);
         }
     }
 
-    async fetchAssociatedDocuments(internshipId: string) {
-        try {
-            this.soutenance = await this.$service.soutenance.getSoutenanceByInternshipId(internshipId);
-            this.report = await this.$service.report.getReportByInternshipId(internshipId);
-            this.visit = await this.$service.visit.getVisitByIntershipId(internshipId);
-        } catch (err) {
-            console.debug(err);
-        }
-    }
+    async lockReport(report: Report) {}
 
-    async lockReport() {}
+    async lockVisit(visit: Visit) {}
 
-    async lockVisit() {}
-
-    async lockSoutenance() {}
+    async lockSoutenance(soutenance: Soutenance) {}
 
     format(date: Date) {
         return !!date ? fromDateToString(date) : date;
@@ -188,6 +209,7 @@ export default class InternshipDetails extends Vue {
     margin-top: 60px;
 }
 .student-info-container {
+    z-index: 10;
     position: fixed;
     top: 5px;
     width: 100%;
@@ -204,5 +226,10 @@ export default class InternshipDetails extends Vue {
         height: 70px;
         margin-right: 15%;
     }
+}
+
+.todo-active {
+    background-color: #ffb1b1;
+    border-radius: 10px;
 }
 </style>

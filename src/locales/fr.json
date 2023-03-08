@@ -74,14 +74,22 @@
       "visit": "Visite",
       "form": {
         "date": "Date",
-        "technical-grade": "Qualité technique",
+        "technical-grade": "Note technique",
         "presentation-grade": "Classe de présentation",
         "global-grade": "Note globale",
         "school-tutor-note": "Note du tuteur scolaire",
         "company-tutor-note": "Note du tuteur d'entreprise",
         "student-note": "Note de l'étudiant",
-        "submit": "Verrouiller et valider"
+        "submit": "Verrouiller et valider",
+        "tutor-grade": "Note du tuteur",
+        "communication-grade": "Note de communication",
+        "note": "Note"
       }
+    },
+    "todo": {
+      "title": "Faire",
+      "subtitle": "Tâche à faire, vérifier ou valider avec {name}",
+      "web-survey": "Sondage Web"
     }
   }
 }
