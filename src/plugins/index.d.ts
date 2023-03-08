@@ -7,11 +7,19 @@ import { IAutomationResultService } from './services/graphql/interfaces/automati
 import { IDashboardService } from './services/graphql/interfaces/dashboard.service';
 import { ProxyService } from './services/proxy.service';
 import { ApolloHelpers } from '@nuxtjs/apollo';
+import { InternshipService } from './services/internship.service';
+import { SoutenanceService } from './services/soutenance.service';
+import { ReportService } from './services/report.service';
+import { VisitService } from './services/visit.service';
 
 export interface Services {
     auth: AuthService;
     notification: NotificationService;
     student: StudentService;
+    internship: InternshipService;
+    soutenance: SoutenanceService;
+    report: ReportService;
+    visit: VisitService;
 }
 
 declare module 'vue/types/vue' {

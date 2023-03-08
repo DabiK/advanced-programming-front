@@ -2,7 +2,7 @@ const HOME_PAGE_PATH = '/home';
 const ERROR_PAGE_PATH = '/error';
 const LOGIN_PAGE_PATH = '/login';
 const HOME_PATH = '/home';
-const ADD_INTERN = '/student/add';
+const ADD_INTERN = '/students/add';
 
 const LAYOUT_WITH_NAVBAR = 'layout-with-navbar';
 const LAYOUT_LOGIN = 'login-layout';

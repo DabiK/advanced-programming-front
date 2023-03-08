@@ -58,5 +58,30 @@
     "title": "Ajouter un stagiaire",
     "student-created": "L'élève {name} a été créé",
     "student-created-failed": "L'étudiant {name} n'a pas été créé, veuillez réessayer plus tard"
+  },
+  "internships": {
+    "title": "{entreprise} - Stage",
+    "details": {
+      "name": "Nom nom}",
+      "company-address": "Adresse de l'entreprise : {adresse}",
+      "startdate": "Date de début de stage : {date}",
+      "enddate": "Date de fin de stage : {date}"
+    },
+    "associated-documents": "Documents associés",
+    "documents": {
+      "soutenance": "Entretien",
+      "report": "Rapport",
+      "visit": "Visite",
+      "form": {
+        "date": "Date",
+        "technical-grade": "Qualité technique",
+        "presentation-grade": "Classe de présentation",
+        "global-grade": "Note globale",
+        "school-tutor-note": "Note du tuteur scolaire",
+        "company-tutor-note": "Note du tuteur d'entreprise",
+        "student-note": "Note de l'étudiant",
+        "submit": "Verrouiller et valider"
+      }
+    }
   }
 }
