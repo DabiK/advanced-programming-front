@@ -1,4 +1,5 @@
 import { Student } from '~/models/students/student';
+import { v4 as uuidv4 } from 'uuid';
 export class StudentService {
     static students: Student[] = [
         {
@@ -45,5 +46,17 @@ export class StudentService {
 
     async getArchivedStudent() {
         return StudentService.students;
+    }
+
+    async create(student: Student) {
+        try {
+            //TODO: to be removed
+            student.id = uuidv4();
+            StudentService.students.push(student);
+            return student;
+        } catch (err) {
+            console.debug(err);
+            throw err;
+        }
     }
 }

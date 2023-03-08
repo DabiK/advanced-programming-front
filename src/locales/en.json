@@ -41,5 +41,22 @@
     "student-list": "List of my students",
     "see-archived-student": "See archived students",
     "hide-archived-student": "Hide archived students"
+  },
+  "add-intern": {
+    "form": {
+      "email": "Email",
+      "firstname": "Firstname",
+      "lastname": "Lastname",
+      "phone-number": "Phone number",
+      "create": "Create",
+      "select-image": "Select image",
+      "picture": "Student pic",
+      "class": "Class"
+    }
+  },
+  "student-add": {
+    "title": "Add an intern",
+    "student-created": "Student {name} has been created",
+    "student-created-failed": "Student {name} has not been created, please try later"
   }
 }
