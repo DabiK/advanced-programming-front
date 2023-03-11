@@ -23,10 +23,35 @@ export class InternshipService {
             specificationsDone: true,
             startingDate: new Date(),
         },
+        {
+            id: '1234',
+            company: {
+                address: '4 rue de paris',
+                id: '1234',
+                name: 'Renault',
+            },
+            report: undefined,
+            soutenance: {
+                id: '1234',
+                dateOfSoutenance: new Date(),
+                soutenanceDone: true,
+                communicationMark: 11,
+                technicalMark: 11,
+                tutorNote: 11,
+            },
+            visit: undefined,
+            endingDate: new Date(),
+            specificationsDone: true,
+            startingDate: new Date(),
+        },
     ];
 
     async getStudentInternship(studentId: string, internshipId: string) {
         //TODO to be removed
         return InternshipService.internships[0];
+    }
+
+    async getStudentInternships(studentId: string) {
+        return InternshipService.internships
     }
 }

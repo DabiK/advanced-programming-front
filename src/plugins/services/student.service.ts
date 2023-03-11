@@ -62,4 +62,8 @@ export class StudentService {
             throw err;
         }
     }
+
+    async archive(id: string) {
+        
+    }
 }

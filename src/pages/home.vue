@@ -64,7 +64,7 @@ import NotificationList from '~/components/notifications/notifications-list.vue'
 import InternshipDetails from '~/components/student/home/internship-details.vue';
 import { Notification } from '~/models/notifications/notification';
 import { Student } from '~/models/students/student';
-import StudentView from './student.vue';
+import StudentView from './students/_id/index.vue';
 import { pages, pagesPath } from '~/utils/page';
 
 @Component({
@@ -104,7 +104,11 @@ export default class Home extends Vue {
         this.archivedStudents = await this.$service.student.getArchivedStudent();
     }
 
-    openStudentPage(id: string) {}
+    openStudentPage(id: string) {
+        this.$router.push({
+            path: pagesPath.STUDENT_PAGE(id),
+        });
+    }
 
     createStudent() {
         this.$router.push({

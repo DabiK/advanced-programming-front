@@ -1,43 +1,34 @@
 <template>
-    <a class="internship-card">
+    <a class="internship-card" @click="goToInternshipPage">
         <div class="internship-card__body">
-            <h3 class="internship-card__body__title">{{ date < new Date() ? $t("student.ended"): $t("student.in-progress") }}</h3>
-            <span class="internship-card__body__date">2022-02-12 to 2022-06-04</span>
+            <h3 class="internship-card__body__title">{{ internship.endingDate < new Date() ? $t("student.ended"): $t("student.in-progress") }}</h3>
+            <span class="internship-card__body__date">{{ internship.startingDate.toLocaleDateString('en-EN') }} to {{ internship.endingDate.toLocaleDateString('en-EN') }}</span>
 
             <ul>
-                <li :class="isDefenseDone ? 'color-success' : 'color-danger'"><span class="circle"></span> {{ $t("student.internship-defense") }}</li>
-                <li :class="isDefenseDone ? 'color-success' : 'color-danger'"><span class="circle"></span> {{ $t("student.report") }}</li>
-                <li :class="isDefenseDone ? 'color-success' : 'color-danger'"><span class="circle"></span> {{ $t("student.visit") }}</li>
+                <li :class="internship.soutenance?.soutenanceDone ? 'color-success' : 'color-danger'"><span class="circle"></span> {{ $t("student.internship-defense") }}</li>
+                <li :class="internship.report?.reportDone ? 'color-success' : 'color-danger'"><span class="circle"></span> {{ $t("student.report") }}</li>
+                <li :class="internship.visit?.visitDone ? 'color-success' : 'color-danger'"><span class="circle"></span> {{ $t("student.visit") }}</li>
             </ul>
         </div>
 
-        <div class="internship-card__footer">{{companyName}}</div>
+        <div class="internship-card__footer">{{internship.company.name}}</div>
     </a>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'nuxt-property-decorator';
+import { Vue, Component, Prop, Emit } from 'nuxt-property-decorator';
+import { Internship } from '~/models/internships/internship';
 
 @Component({
     name: "internship-details"
 })
 export default class InternshipDetails extends Vue {
     @Prop()
-    date!: Date
+    internship!: Internship
 
-    @Prop()
-    isDefenseDone!: boolean
-
-    @Prop()
-    isReportDone!: boolean
-
-    @Prop()
-    isVisitDone!: boolean
-
-    @Prop()
-    companyName!: string
+    @Emit("goToInternshipPage")
+    goToInternshipPage() {}
 }
-
 </script>
 
 <style lang="scss" scoped>
@@ -45,7 +36,6 @@ export default class InternshipDetails extends Vue {
 
 .internship-card {
     display: block;
-    margin: 1rem;
     width: 230px;
     color: $white;
 

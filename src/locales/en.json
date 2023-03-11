@@ -47,7 +47,10 @@
     "ended": "Ended",
     "internship-defense": "Internship defense",
     "visit": "Visit",
-    "report": "Report"
+    "report": "Report",
+    "to": "to",
+    "edit-profile": "Edit profile",
+    "archived": "Archived"
   },
   "add-intern": {
     "form": {
@@ -60,6 +63,9 @@
       "picture": "Student pic",
       "class": "Class"
     }
+  },
+  "add-internship": {
+    "btn": "Add internship"
   },
   "student-add": {
     "title": "Add an intern",
