@@ -11,6 +11,8 @@
 
         <h2>{{ $t('home.student-list') }}</h2>
 
+        <internship-details />
+
         <v-row>
             <v-col
                 @click="openStudentPage(student.id)"
@@ -59,14 +61,19 @@
 <script lang="ts">
 import { Vue, Component, Inject } from 'nuxt-property-decorator';
 import NotificationList from '~/components/notifications/notifications-list.vue';
+import InternshipDetails from '~/components/student/home/internship-details.vue';
 import { Notification } from '~/models/notifications/notification';
 import { Student } from '~/models/students/student';
+import StudentView from './student.vue';
 import { pages } from '~/utils/page';
 
 @Component({
     name: 'Home',
     layout: pages.LAYOUT_WITH_NAVBAR,
-    components: { NotificationList },
+    components: { 
+        NotificationList,  
+        StudentView
+    },
 })
 export default class Home extends Vue {
     errorMessage: string = '';

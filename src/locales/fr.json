@@ -41,5 +41,12 @@
     "student-list": "Liste de mes étudiants",
     "see-archived-student": "Voir les étudiants archivés",
     "hide-archived-student": "Masquer les étudiants archivés"
+  }, 
+  "student": {
+    "in-progress": "En cours",
+    "ended": "Fini",
+    "internship-defense": "Soutenance",
+    "visit": "Visite",
+    "report": "Rapport"
   }
 }
