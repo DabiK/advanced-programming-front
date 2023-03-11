@@ -7,11 +7,13 @@ import { IAutomationResultService } from './services/graphql/interfaces/automati
 import { IDashboardService } from './services/graphql/interfaces/dashboard.service';
 import { ProxyService } from './services/proxy.service';
 import { ApolloHelpers } from '@nuxtjs/apollo';
+import { InternshipService } from './services/internship.service';
 
 export interface Services {
     auth: AuthService;
     notification: NotificationService;
     student: StudentService;
+    internship: InternshipService;
 }
 
 declare module 'vue/types/vue' {

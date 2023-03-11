@@ -40,6 +40,9 @@ export class StudentService {
         },
     ];
 
+    async getStudent(id: string) {
+        return StudentService.students[0];
+    }
     async getStudents() {
         return StudentService.students;
     }

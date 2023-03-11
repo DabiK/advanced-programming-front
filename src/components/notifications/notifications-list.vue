@@ -9,7 +9,7 @@ vue
             >
                 <template v-slot:default>
                     <v-list-item-action>
-                        <v-checkbox :v-model="notification.done"></v-checkbox>
+                        <v-checkbox v-model="notification.done"></v-checkbox>
                     </v-list-item-action>
 
                     <v-list-item-content>

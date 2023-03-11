@@ -19,6 +19,7 @@
         "child_process": "^1.0.2",
         "cookie-universal-nuxt": "^2.2.2",
         "core-js": "^3.19.3",
+        "date-fns": "^2.29.3",
         "dotenv": "^16.0.3",
         "net": "^1.0.2",
         "nuxt": "^2.15.8",
