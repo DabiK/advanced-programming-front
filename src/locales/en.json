@@ -48,5 +48,55 @@
     "internship-defense": "Internship defense",
     "visit": "Visit",
     "report": "Report"
+  },
+  "add-intern": {
+    "form": {
+      "email": "Email",
+      "firstname": "Firstname",
+      "lastname": "Lastname",
+      "phone-number": "Phone number",
+      "create": "Create",
+      "select-image": "Select image",
+      "picture": "Student pic",
+      "class": "Class"
+    }
+  },
+  "student-add": {
+    "title": "Add an intern",
+    "student-created": "Student {name} has been created",
+    "student-created-failed": "Student {name} has not been created, please try later"
+  },
+  "internships": {
+    "title": "{company} - Internship",
+    "details": {
+      "name": "Name: {name}",
+      "company-address": "Company address: {address}",
+      "startdate": "Internship start date: {date}",
+      "enddate": "Internship end date: {date}"
+    },
+    "associated-documents": "Associated documents",
+    "documents": {
+      "soutenance": "Soutenance",
+      "report": "Report",
+      "visit": "Visit",
+      "form": {
+        "date": "Date",
+        "technical-grade": "Technical mark",
+        "presentation-grade": "Presentation grade",
+        "global-grade": "Global grade",
+        "school-tutor-note": "School tutor note",
+        "company-tutor-note": "Company tutor note",
+        "student-note": "Student note",
+        "submit": "Lock and validate",
+        "tutor-grade": "Tutor mark",
+        "communication-grade": "Communication mark",
+        "note": "Note"
+      }
+    },
+    "todo": {
+      "title": "Todo",
+      "subtitle": "Task to do, check or valid with {name}",
+      "web-survey": "Web survey"
+    }
   }
 }

@@ -65,7 +65,7 @@ import InternshipDetails from '~/components/student/home/internship-details.vue'
 import { Notification } from '~/models/notifications/notification';
 import { Student } from '~/models/students/student';
 import StudentView from './student.vue';
-import { pages } from '~/utils/page';
+import { pages, pagesPath } from '~/utils/page';
 
 @Component({
     name: 'Home',
@@ -106,7 +106,11 @@ export default class Home extends Vue {
 
     openStudentPage(id: string) {}
 
-    createStudent() {}
+    createStudent() {
+        this.$router.push({
+            path: pagesPath.ADD_INTERN,
+        });
+    }
 }
 </script>
 

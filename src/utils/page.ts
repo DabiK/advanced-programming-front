@@ -3,6 +3,7 @@ const ERROR_PAGE_PATH = '/error';
 const LOGIN_PAGE_PATH = '/login';
 const HOME_PATH = '/home';
 const STUDENT_PAGE = '/students/'
+const ADD_INTERN = '/students/add';
 
 const LAYOUT_WITH_NAVBAR = 'layout-with-navbar';
 const LAYOUT_LOGIN = 'login-layout';
@@ -17,5 +18,6 @@ export const pagesPath = {
     HOME_PAGE_PATH,
     LOGIN_PAGE_PATH,
     HOME_PATH,
-    STUDENT_PAGE
+    STUDENT_PAGE,
+    ADD_INTERN,
 };
