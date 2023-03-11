@@ -65,7 +65,13 @@
     }
   },
   "add-internship": {
-    "btn": "Add internship"
+    "btn": "Add internship",
+    "form": {
+      "company": "Company",
+      "company-address": "Company address",
+      "start-date": "Internship start date",
+      "end-date": "Internship end date"
+    }
   },
   "student-add": {
     "title": "Add an intern",

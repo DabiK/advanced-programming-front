@@ -65,7 +65,13 @@
     }
   },
   "add-internship": {
-    "btn": "Ajouter un stage"
+    "btn": "Ajouter un stage",
+    "form": {
+      "company": "Entreprise",
+      "company-address": "Adresse de l'entreprise",
+      "start-date": "Date début de stage",
+      "end-date": "Date fin de stage"
+    }
   },
   "student-add": {
     "title": "Ajouter un stagiaire",
