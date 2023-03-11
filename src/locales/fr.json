@@ -75,6 +75,13 @@
       "success": "Le stage a bien été ajouté"
     }
   },
+  "edit-intern": {
+    "form": {
+      "success": "L'étudiant a bien été mis à jour",
+      "failed": "Une erreur est survenue lors de l'édition de l'étudiant. Veuillez réessayer plus tard",
+      "edit": "Modifier"
+    }
+  },
   "student-add": {
     "title": "Ajouter un stagiaire",
     "student-created": "L'élève {name} a été créé",

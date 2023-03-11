@@ -15,14 +15,18 @@
         <section class="student-internships">
             <h2>Internships</h2>
             <div class="internships-container">
-                <internship-details v-for="(internship, index) in internships" :key="index" :internship="internship" @goToInternshipPage="$event => goToInternshipPage(internship.id)" />
+                <internship-details v-for="(internship, index) in internships" :key="index" :internship="internship" @goToInternshipPage="goToInternshipPage(internship.id)" />
             </div>
 
-            <v-btn class="base-btn primary" @click="addInternship">{{ $t("add-internship.btn") }}</v-btn>
+            <NuxtLink :to="pagesPath.ADD_INTERNSHIP_PAGE(student?.id)">
+                <v-btn class="base-btn primary">{{ $t("add-internship.btn") }}</v-btn>
+            </NuxtLink>
         </section>
 
         <section class="student-actions">
-            <v-btn class="base-btn primary">{{ $t("student.edit-profile") }}</v-btn>
+            <NuxtLink :to="`/students/${student?.id}/edit`">
+                <v-btn class="base-btn primary">{{ $t("student.edit-profile") }}</v-btn>
+            </NuxtLink>
             <v-btn class="base-btn danger" @click="archiveStudent">{{ $t("student.archived") }}</v-btn>
         </section>
     </div>
@@ -73,16 +77,14 @@ export default class StudentView extends Vue {
         });
     }
 
-    addInternship() {
-        this.$router.push({
-            path: pagesPath.ADD_INTERNSHIP_PAGE(this.student.id),
-        });
-    }
-
     goToInternshipPage(internshipId: string) {
         this.$router.push({
             path: pagesPath.INTERNSHIP_PAGE(this.student.id, internshipId),
         });
+    }
+
+    get pagesPath() {
+        return pagesPath;
     }
 }
 </script>

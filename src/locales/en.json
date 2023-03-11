@@ -64,6 +64,13 @@
       "class": "Class"
     }
   },
+  "edit-intern": {
+    "form": {
+      "success": "The student has been well edited",
+      "failed": "Sadly, an error has occured when editing student",
+      "edit": "Edit"
+    }
+  },
   "add-internship": {
     "btn": "Add internship",
     "form": {

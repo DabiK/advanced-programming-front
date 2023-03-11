@@ -1,6 +1,6 @@
 <template>
     <div class="add-internship-container">
-        <h1>Ajouter un stage</h1>
+        <h1>{{$t("add-internship.btn") }}</h1>
         <add-internship-form @submit="addInternship"/>
     </div>
 </template>

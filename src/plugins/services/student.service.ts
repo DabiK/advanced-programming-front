@@ -66,4 +66,19 @@ export class StudentService {
     async archive(id: string) {
         
     }
+
+    async edit(student: Student) {
+        //TODO: to be removed
+
+        const oldStudent = StudentService.students.find(s => s.id === student.id)
+        if (!oldStudent) throw new Error()
+
+        oldStudent.email = student.email
+        oldStudent.firstName = student.firstName
+        oldStudent.lastName = student.lastName
+        oldStudent.phoneNumber = student.phoneNumber
+        oldStudent.picture = student.picture
+
+        return oldStudent
+    }
 }
