@@ -1,5 +1,5 @@
 <template>
-    <v-img class="logo" max-width="300px" src="/images/logo.png" />
+    <v-img class="logo" max-width="300px" src="images/logo.png" />
 </template>
 
 <script lang="ts">
