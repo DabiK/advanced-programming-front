@@ -42,6 +42,16 @@
     "see-archived-student": "See archived students",
     "hide-archived-student": "Hide archived students"
   },
+  "student": {
+    "in-progress": "In progress",
+    "ended": "Ended",
+    "internship-defense": "Internship defense",
+    "visit": "Visit",
+    "report": "Report",
+    "to": "to",
+    "edit-profile": "Edit profile",
+    "archived": "Archived"
+  },
   "add-intern": {
     "form": {
       "email": "Email",
@@ -53,6 +63,9 @@
       "picture": "Student pic",
       "class": "Class"
     }
+  },
+  "add-internship": {
+    "btn": "Add internship"
   },
   "student-add": {
     "title": "Add an intern",
