@@ -18,7 +18,7 @@
                 <internship-details v-for="(internship, index) in internships" :key="index" :internship="internship" @goToInternshipPage="$event => goToInternshipPage(internship.id)" />
             </div>
 
-            <v-btn class="base-btn primary">{{ $t("add-internship.btn") }}</v-btn>
+            <v-btn class="base-btn primary" @click="addInternship">{{ $t("add-internship.btn") }}</v-btn>
         </section>
 
         <section class="student-actions">
@@ -70,6 +70,12 @@ export default class StudentView extends Vue {
     redirectToHome() {
         this.$router.push({
             path: pagesPath.HOME_PATH,
+        });
+    }
+
+    addInternship() {
+        this.$router.push({
+            path: pagesPath.ADD_INTERNSHIP_PAGE(this.student.id),
         });
     }
 

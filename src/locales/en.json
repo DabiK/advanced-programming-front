@@ -65,7 +65,15 @@
     }
   },
   "add-internship": {
-    "btn": "Add internship"
+    "btn": "Add internship",
+    "form": {
+      "companyAddress": "Company address",
+      "companyName": "Company",
+      "startingDate": "Internship starting date",
+      "endingDate": "Internship ending date",
+      "error": "The internship in {companyName} could not be created. Please retry later", 
+      "success": "The internship has been well added"
+    }
   },
   "student-add": {
     "title": "Add an intern",

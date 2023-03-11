@@ -28,6 +28,10 @@ export default class InternshipDetails extends Vue {
 
     @Emit("goToInternshipPage")
     goToInternshipPage() {}
+
+    created() {
+        console.log("Internshipdetails", this.internship)
+    }
 }
 </script>
 
