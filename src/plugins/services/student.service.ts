@@ -65,7 +65,16 @@ export class StudentService extends BaseService {
     }
 
     async getArchivedStudent() {
-        return StudentService.students;
+        try {
+            return (
+                await this.axios.get<Student[]>('/archived-students', {
+                    withCredentials: true,
+                })
+            ).data;
+        } catch (err) {
+            console.debug(err);
+            throw err;
+        }
     }
 
     async create(student: Student) {
@@ -81,7 +90,18 @@ export class StudentService extends BaseService {
         }
     }
 
-    async archive(id: string) {}
+    async archive(student: Student) {
+        try {
+            return (
+                await this.axios.patch<Student>('/students', student, {
+                    withCredentials: true,
+                })
+            ).data;
+        } catch (err) {
+            console.debug(err);
+            throw err;
+        }
+    }
 
     async edit(student: Student) {
         try {

@@ -81,7 +81,7 @@ export default class StudentView extends Vue {
 
     archiveStudent() {
         try {
-            this.$service.student.archive(this.student.id);
+            this.$service.student.archive(this.student);
             this.redirectToHome();
         }
         catch (e) {
