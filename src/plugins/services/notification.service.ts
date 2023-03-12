@@ -13,7 +13,17 @@ export class NotificationService extends BaseService {
         },
     ];
 
-    async getAllNotification() {
-        return NotificationService.notifications;
+    async getAllNotification() : Promise<Notification[]> {
+        try {
+            return (
+                await this.axios.get<Notification[]>(`/notifications`, {
+                    withCredentials: true,
+                })
+            ).data;
+        }
+        catch (err) {
+            console.debug(err);
+            throw err;
+        }
     }
 }
