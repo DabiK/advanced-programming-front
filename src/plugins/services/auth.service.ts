@@ -3,6 +3,7 @@ import { SignupCredential } from '~/models/login/signup.model';
 import { User } from '~/models/user/user.model';
 import { BaseService } from './base.service';
 import { NuxtAxiosInstance } from '@nuxtjs/axios';
+import https from 'https';
 
 export class AuthService extends BaseService {
     constructor(axios: NuxtAxiosInstance) {
@@ -20,7 +21,11 @@ export class AuthService extends BaseService {
 
     async signup(credential: SignupCredential): Promise<boolean> {
         try {
-            await this.axios.post('/register', credential);
+            await this.axios.post('/register', credential, {
+                httpsAgent: new https.Agent({
+                    rejectUnauthorized: false,
+                }),
+            });
             return true;
         } catch (err) {
             console.debug(err);
@@ -32,7 +37,9 @@ export class AuthService extends BaseService {
         try {
             return (
                 await this.axios.get<User>('/me', {
-                    withCredentials: true,
+                    httpsAgent: new https.Agent({
+                        rejectUnauthorized: false,
+                    }),
                 })
             ).data;
         } catch (err) {

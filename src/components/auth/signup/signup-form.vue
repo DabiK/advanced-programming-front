@@ -44,7 +44,6 @@
                     <v-text-field
                         v-model="credential.password"
                         :rules="formRules['password']"
-                        :hint="$t('signup.password-rule')"
                         :append-icon="passwordVisible ? 'mdi-eye-outline' : 'mdi-eye-off-outline'"
                         @click:append="tooglePasswordVisibility"
                         @input="resetError"
@@ -87,13 +86,13 @@ import { SignupCredential } from '~/models/login/signup.model';
 })
 export default class SignupForm extends Vue {
     credential: SignupCredential = {
-        email: 'toto@gmail.com',
-        firstName: 'toto',
-        lastName: 'toto',
-        password: 'oooooooo',
-        phoneNumber: '0000000000',
+        email: '',
+        firstName: '',
+        lastName: '',
+        password: '',
+        phoneNumber: '',
         profession: 'Tutor',
-        confirmPassword: 'oooooooo',
+        confirmPassword: '',
     };
 
     formRules: any = {
