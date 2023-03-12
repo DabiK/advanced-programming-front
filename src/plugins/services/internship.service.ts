@@ -50,21 +50,38 @@ export class InternshipService extends BaseService {
     ];
 
     async getStudentInternship(studentId: string, internshipId: string) {
-        //TODO to be removed
-        return InternshipService.internships[0];
+        try {
+            return (
+                await this.axios.get<Internship>(`/students/${studentId}/internships/${internshipId}`, {
+                    withCredentials: true,
+                })
+            ).data;
+        }
+        catch (err) {
+            console.debug(err);
+            throw err;
+        }
     }
 
     async getStudentInternships(studentId: string) {
-        //TODO: to be removed
-        return InternshipService.internships;
+        try {
+            return (
+                await this.axios.get<Internship>(`/students/${studentId}/internships/`, {
+                    withCredentials: true,
+                })
+            ).data;
+        }
+        catch (err) {
+            console.debug(err);
+            throw err;
+        }
     }
 
-    async create(addInternshipDTO: AddInternshipDTO) {
-        //TODO: to bre removed
+    async create(studentId: string, addInternshipDTO: AddInternshipDTO) {
         const internship: Internship = {
-            id: uuidv4(),
+            id: '',
             company: {
-                id: uuidv4(),
+                id: '',
                 name: addInternshipDTO.companyName,
                 address: addInternshipDTO.companyAddress,
             },
@@ -73,7 +90,16 @@ export class InternshipService extends BaseService {
             endingDate: new Date(addInternshipDTO.endingDate),
         };
 
-        InternshipService.internships.push(internship);
-        return internship;
+        try {
+            return (
+                await this.axios.post<Internship>(`/students/${studentId}/internships`, internship, {
+                    withCredentials: true,
+                })
+            ).data;
+        }
+        catch (err) {
+            console.debug(err);
+            throw err;
+        }
     }
 }
