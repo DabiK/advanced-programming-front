@@ -6,7 +6,7 @@
         "dev": "set NODE_OPTIONS=--openssl-legacy-provider && nuxt",
         "build": "nuxt build",
         "start": "nuxt start",
-        "generate": "set NODE_OPTIONS=--openssl-legacy-provider && nuxt generate",
+        "generate": "set NODE_TLS_REJECT_UNAUTHORIZED=0&&set ENV=prod&&set NODE_OPTIONS=--openssl-legacy-provider && nuxt generate",
         "test": "jest",
         "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
     },
