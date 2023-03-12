@@ -65,7 +65,22 @@
     }
   },
   "add-internship": {
-    "btn": "Ajouter un stage"
+    "btn": "Ajouter un stage",
+    "form": {
+      "companyAddress": "Adresse de l'entreprise",
+      "companyName": "Entreprise",
+      "startingDate": "Date début de stage",
+      "endingDate": "Date fin de stage",
+      "error": "Le stage dans l'entreprise {companyName} n'a pas pu être créé. Veuillez réessayer plus tard",
+      "success": "Le stage a bien été ajouté"
+    }
+  },
+  "edit-intern": {
+    "form": {
+      "success": "L'étudiant a bien été mis à jour",
+      "failed": "Une erreur est survenue lors de l'édition de l'étudiant. Veuillez réessayer plus tard",
+      "edit": "Modifier"
+    }
   },
   "student-add": {
     "title": "Ajouter un stagiaire",
