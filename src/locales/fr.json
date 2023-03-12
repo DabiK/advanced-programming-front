@@ -10,12 +10,16 @@
     "signin": "S'autentifier",
     "manage-your-students": "Gérez vos élèves",
     "signup": "Créer un compte",
-    "confirm-password": "Confirmez le mot de passe"
+    "confirm-password": "Confirmez le mot de passe",
+    "firstname": "Prénom",
+    "lastname": "Nom de famille",
+    "phone": "Téléphone"
   },
   "form-error": {
     "empty-input": "Cette entrée ne doit pas être vide",
     "incorrect-email-input": "Ce champ doit être un email",
-    "incorrect-confirm-password": "Confirmer le mot de passe et le mot de passe doit être identique"
+    "incorrect-confirm-password": "Confirmer le mot de passe et le mot de passe doit être identique",
+    "invalid-phone": "Le numéro de téléphone doit avoir 10 chiffres"
   },
   "errors": {
     "invalid-credential": "",
@@ -41,7 +45,7 @@
     "student-list": "Liste de mes étudiants",
     "see-archived-student": "Voir les étudiants archivés",
     "hide-archived-student": "Masquer les étudiants archivés"
-  }, 
+  },
   "student": {
     "in-progress": "En cours",
     "ended": "Fini",
@@ -67,10 +71,19 @@
   "add-internship": {
     "btn": "Ajouter un stage",
     "form": {
-      "company": "Entreprise",
-      "company-address": "Adresse de l'entreprise",
-      "start-date": "Date début de stage",
-      "end-date": "Date fin de stage"
+      "companyAddress": "Adresse de l'entreprise",
+      "companyName": "Entreprise",
+      "startingDate": "Date début de stage",
+      "endingDate": "Date fin de stage",
+      "error": "Le stage dans l'entreprise {companyName} n'a pas pu être créé. Veuillez réessayer plus tard",
+      "success": "Le stage a bien été ajouté"
+    }
+  },
+  "edit-intern": {
+    "form": {
+      "success": "L'étudiant a bien été mis à jour",
+      "failed": "Une erreur est survenue lors de l'édition de l'étudiant. Veuillez réessayer plus tard",
+      "edit": "Modifier"
     }
   },
   "student-add": {

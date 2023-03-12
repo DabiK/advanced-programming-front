@@ -2,12 +2,12 @@
     <div>
         <h1>Student details</h1>
         <div class="student-details">
-            <img :src="student?.picture" />
+            <img :src="student?.pictureUrl" />
             <div>
                 <ul>
-                    <li>{{ $t("add-intern.form.lastname") }}: {{ student?.lastName }}</li>
-                    <li>{{ $t("add-intern.form.firstname") }} : {{ student?.firstName }}</li>
-                    <li>{{ $t("add-intern.form.phone-number") }}: {{ student?.phoneNumber }}</li>
+                    <li>{{ $t('add-intern.form.lastname') }}: {{ student?.lastName }}</li>
+                    <li>{{ $t('add-intern.form.firstname') }} : {{ student?.firstName }}</li>
+                    <li>{{ $t('add-intern.form.phone-number') }}: {{ student?.phoneNumber }}</li>
                 </ul>
             </div>
         </div>
@@ -15,15 +15,24 @@
         <section class="student-internships">
             <h2>Internships</h2>
             <div class="internships-container">
-                <internship-details v-for="(internship, index) in internships" :key="index" :internship="internship" @goToInternshipPage="$event => goToInternshipPage(internship.id)" />
+                <internship-details
+                    v-for="(internship, index) in internships"
+                    :key="index"
+                    :internship="internship"
+                    @goToInternshipPage="goToInternshipPage(internship.id)"
+                />
             </div>
 
-            <v-btn class="base-btn primary">{{ $t("add-internship.btn") }}</v-btn>
+            <NuxtLink :to="pagesPath.ADD_INTERNSHIP_PAGE(student?.id)">
+                <v-btn class="base-btn primary">{{ $t('add-internship.btn') }}</v-btn>
+            </NuxtLink>
         </section>
 
         <section class="student-actions">
-            <v-btn class="base-btn primary">{{ $t("student.edit-profile") }}</v-btn>
-            <v-btn class="base-btn danger" @click="archiveStudent">{{ $t("student.archived") }}</v-btn>
+            <NuxtLink :to="`/students/${student?.id}/edit`">
+                <v-btn class="base-btn primary">{{ $t('student.edit-profile') }}</v-btn>
+            </NuxtLink>
+            <v-btn class="base-btn danger" @click="archiveStudent">{{ $t('student.archived') }}</v-btn>
         </section>
     </div>
 </template>
@@ -32,39 +41,41 @@
 import { Vue, Component, Inject } from 'nuxt-property-decorator';
 import { pages, pagesPath } from '~/utils/page';
 import InternshipDetails from '~/components/student/home/internship-details.vue';
-import { Internship } from '~/models/internships/internship'
+import { Internship } from '~/models/internships/internship';
 import { Student } from '~/models/students/student';
+import { AUTHENTICATION_MIDDLEWARE } from '~/middleware/authentication';
 
 @Component({
     name: 'Student',
     layout: pages.LAYOUT_WITH_NAVBAR,
+    middleware: AUTHENTICATION_MIDDLEWARE,
     components: {
-        InternshipDetails
-    }
+        InternshipDetails,
+    },
 })
 export default class StudentView extends Vue {
     @Inject()
     student!: Student;
 
     @Inject({
-        default: []
+        default: [],
     })
-    internships!: Internship[]
+    internships!: Internship[];
 
     async created() {
-        const { id } = this.$route.params
+        const { id } = this.$route.params;
 
         this.student = await this.$service.student.getStudent(id);
         if (!this.student) {
-            return this.redirectToHome()
+            return this.redirectToHome();
         }
 
-        this.internships = await this.$service.internship.getStudentInternships(id)
+        this.internships = await this.$service.internship.getStudentInternships(id);
     }
 
     archiveStudent() {
-        this.$service.student.archive(this.student.id)
-        this.redirectToHome()
+        this.$service.student.archive(this.student.id);
+        this.redirectToHome();
     }
 
     redirectToHome() {
@@ -77,6 +88,10 @@ export default class StudentView extends Vue {
         this.$router.push({
             path: pagesPath.INTERNSHIP_PAGE(this.student.id, internshipId),
         });
+    }
+
+    get pagesPath() {
+        return pagesPath;
     }
 }
 </script>

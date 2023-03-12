@@ -1,7 +1,7 @@
 vue
 <template>
     <div v-if="isLoading" class="loader-container">
-        <v-img max-width="150px" class="loader" src="/images/loader.gif" />
+        <v-img max-width="150px" class="loader" src="images/loader.gif" />
     </div>
 </template>
 

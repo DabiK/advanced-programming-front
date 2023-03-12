@@ -9,12 +9,14 @@
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
 import AddInternForm from '~/components/intern/add-intern-form.vue';
+import { AUTHENTICATION_MIDDLEWARE } from '~/middleware/authentication';
 import { Student } from '~/models/students/student';
 import { pages, pagesPath } from '~/utils/page';
 
 @Component({
     name: 'AddIntern',
     layout: pages.LAYOUT_WITH_NAVBAR,
+    middleware: AUTHENTICATION_MIDDLEWARE,
     components: {
         AddInternForm,
     },

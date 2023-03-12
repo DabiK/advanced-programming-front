@@ -1,14 +1,14 @@
 <template>
     <div>
-        <v-container class="add-intern-container" fluid>
+        <v-container fluid>
             <v-form ref="form" lazy-validation>
-                <div class="login-email-container text-left">
+                <div class="text-left">
                     <v-row>
                         <v-col md="6">
                             <h4 class="mb-2">{{ $t('add-intern.form.firstname') }}</h4>
                             <v-text-field
                                 type="text"
-                                v-model="student.firstName"
+                                v-model="beforeEditingStudent.firstName"
                                 :rules="formRules['text']"
                                 solo
                             ></v-text-field>
@@ -18,7 +18,7 @@
                             <h4 class="mb-2">{{ $t('add-intern.form.lastname') }}</h4>
                             <v-text-field
                                 type="text"
-                                v-model="student.lastName"
+                                v-model="beforeEditingStudent.lastName"
                                 :rules="formRules['text']"
                                 solo
                             ></v-text-field>
@@ -28,7 +28,7 @@
                             <h4 class="mb-2">{{ $t('add-intern.form.email') }}</h4>
                             <v-text-field
                                 type="email"
-                                v-model="student.email"
+                                v-model="beforeEditingStudent.email"
                                 :rules="formRules['email']"
                                 solo
                             ></v-text-field>
@@ -38,17 +38,17 @@
                             <h4 class="mb-2">{{ $t('add-intern.form.phone-number') }}</h4>
                             <v-text-field
                                 type="text"
-                                v-model="student.phoneNumber"
+                                v-model="beforeEditingStudent.phoneNumber"
                                 :rules="formRules['phone']"
                                 solo
                             ></v-text-field>
                         </v-col>
 
-                        <v-col md="6">
+                        <v-col md="12">
                             <h4 class="mb-2">{{ $t('add-intern.form.class') }}</h4>
                             <v-text-field
                                 type="text"
-                                v-model="student.currentClass"
+                                v-model="beforeEditingStudent.currentClass"
                                 :rules="formRules['text']"
                                 solo
                             ></v-text-field>
@@ -58,12 +58,12 @@
                             <h4 class="mb-2">{{ $t('add-intern.form.picture') }}</h4>
                             <v-text-field
                                 type="text"
-                                v-model="student.pictureUrl"
+                                v-model="beforeEditingStudent.pictureUrl"
                                 :rules="formRules['text']"
                                 solo
                             ></v-text-field>
                             <v-avatar size="200">
-                                <img :src="student.pictureUrl" />
+                                <img :src="beforeEditingStudent.pictureUrl" />
                             </v-avatar>
                         </v-col>
                     </v-row>
@@ -71,7 +71,7 @@
                     <p v-if="errorMessage !== ''" class="my-0 red--text">{{ errorMessage }}</p>
                 </div>
                 <div class="login-form-footer">
-                    <v-btn class="base-btn primary" @click="validateForm">{{ $t('add-intern.form.create') }}</v-btn>
+                    <v-btn class="base-btn primary" @click="validateForm">{{ $t('edit-intern.form.edit') }}</v-btn>
                 </div>
             </v-form>
         </v-container>
@@ -79,33 +79,32 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Emit, PropSync } from 'nuxt-property-decorator';
+import { Vue, Component, Emit, PropSync, Prop } from 'nuxt-property-decorator';
 import { VForm } from '~/models/form/v-form';
 import { Student } from '~/models/students/student';
+import { pagesPath } from '~/utils/page';
 
 @Component({
-    name: 'add-intern-form',
+    name: 'edit-student-form',
 })
-export default class AddInternForm extends Vue {
-    student: Partial<Student> = {
-        firstName: '',
-        lastName: '',
-        email: '',
-        phoneNumber: '',
-    };
+export default class EditStudentForm extends Vue {
+    @Prop()
+    beforeEditingStudent!: Student;
 
-    previewImage: string = '';
+    student: Partial<Student> = {};
+    previewImage = '';
 
     formRules: any = {
+        text: [(v: any) => v !== undefined || this.$t('form-error.empty-input')],
         email: [
             (v: any) => v !== '' || this.$t('form-error.empty-input'),
             (v: any) => /.+@.+\..+/.test(v) || this.$t('form-error.incorrect-email-input'),
         ],
-        text: [(v: any) => v !== '' || this.$t('form-error.empty-input')],
         phone: [
             (v: any) => v !== '' || this.$t('form-error.empty-input'),
-            (v: any) => (v !== '' && (v as string).length == 10) || this.$t('form-error.invalid-phone'),
+            (v: any) => (v !== '' && (v as string)?.length == 10) || this.$t('form-error.invalid-phone'),
         ],
+        date: [(v: any) => v !== undefined || this.$t('form-error.empty-input')],
     };
 
     @PropSync('error', {
@@ -121,17 +120,13 @@ export default class AddInternForm extends Vue {
 
     @Emit('submit')
     create() {
-        return this.student;
+        return this.beforeEditingStudent;
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.add-intern-container {
-    height: 80vh;
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
+button {
+    width: fit-content;
 }
 </style>

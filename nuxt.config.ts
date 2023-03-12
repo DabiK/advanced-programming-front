@@ -6,7 +6,11 @@ dotenv.config({
 });
 export default {
     srcDir: './src',
+    target: 'static',
     // Global page headers: https://go.nuxtjs.dev/config-head
+    router: {
+        base: '/advanced-programming-front/',
+    },
     head: {
         titleTemplate: '%s - frontend',
         title: 'frontend',
@@ -100,6 +104,7 @@ export default {
 
     axios: {
         withCredentials: true,
+        baseURL: process.env.BASE_URL,
     },
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {},

@@ -24,6 +24,7 @@ import { Vue, Component, getModule } from 'nuxt-property-decorator';
 import LoginHeader from '~/components/auth/login/login-header.vue';
 import LoginPageRightImage from '~/components/auth/login/login-page-right-image.vue';
 import SignupForm from '~/components/auth/signup/signup-form.vue';
+import { HOME_REDIRECTION_MIDDLEWARE } from '~/middleware/home-redirection';
 import { SignupCredential } from '~/models/login/signup.model';
 import { registerModule } from '~/store/store-helper';
 import { UserState, USER_STATE_NAME } from '~/store/user-state';
@@ -32,6 +33,7 @@ import { pages, pagesPath } from '~/utils/page';
 @Component({
     name: 'Signup',
     layout: pages.LAYOUT_LOGIN,
+    middleware: HOME_REDIRECTION_MIDDLEWARE,
     components: {
         SignupForm,
         LoginPageRightImage,

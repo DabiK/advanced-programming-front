@@ -10,9 +10,9 @@
                     <h4 class="mb-2">{{ $t('login.email') }}</h4>
                     <v-text-field
                         type="email"
-                        v-model="credential.username"
+                        v-model="credential.email"
                         @input="resetError"
-                        :rules="formRules['username']"
+                        :rules="formRules['email']"
                         solo
                     ></v-text-field>
                     <h4 class="mb-2">{{ $t('login.password') }}</h4>
@@ -49,12 +49,12 @@ import { VForm } from '~/models/form/v-form';
 })
 export default class LoginForm extends Vue {
     credential: LoginCredential = {
-        username: '',
+        email: '',
         password: '',
     };
 
     formRules: any = {
-        username: [(v: any) => v !== '' || this.$t('form-error.empty-input')],
+        email: [(v: any) => v !== '' || this.$t('form-error.empty-input')],
         password: [(v: any) => v !== '' || this.$t('form-error.empty-input')],
     };
 

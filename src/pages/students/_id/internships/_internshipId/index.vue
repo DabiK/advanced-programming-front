@@ -119,10 +119,12 @@ import { Report } from '~/models/report/report';
 import { Visit } from '~/models/visit/visit';
 import AssociatedDocument from '~/components/internship/associated-document.vue';
 import { Student } from '~/models/students/student';
+import { AUTHENTICATION_MIDDLEWARE } from '~/middleware/authentication';
 
 @Component({
     name: 'InternshipDetails',
     layout: pages.LAYOUT_WITH_NAVBAR,
+    middleware: AUTHENTICATION_MIDDLEWARE,
     components: {
         AssociatedDocument,
     },

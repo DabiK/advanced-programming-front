@@ -22,10 +22,10 @@
                 class="student-container text-center"
             >
                 <v-avatar size="200">
-                    <img :src="student.picture" :alt="student.firstName" />
+                    <img :src="student.pictureUrl" :alt="student.firstName" />
                 </v-avatar>
                 <p>{{ `${student.firstName} ${student.lastName}` }}</p>
-                <p class="font-weight-bold">{{ student.class }}</p>
+                <p class="font-weight-bold">{{ student.currentClass }}</p>
             </v-col>
 
             <v-col @click="createStudent" class="student-container" cols="3">
@@ -48,10 +48,10 @@
                     class="student-container text-center"
                 >
                     <v-avatar size="200">
-                        <img :src="student.picture" :alt="student.firstName" />
+                        <img :src="student.pictureUrl" :alt="student.firstName" />
                     </v-avatar>
                     <p>{{ `${student.firstName} ${student.lastName}` }}</p>
-                    <p class="font-weight-bold">{{ student.class }}</p>
+                    <p class="font-weight-bold">{{ student.currentClass }}</p>
                 </v-col>
             </v-row>
         </template>
@@ -66,13 +66,15 @@ import { Notification } from '~/models/notifications/notification';
 import { Student } from '~/models/students/student';
 import StudentView from './students/_id/index.vue';
 import { pages, pagesPath } from '~/utils/page';
+import { AUTHENTICATION_MIDDLEWARE } from '~/middleware/authentication';
 
 @Component({
     name: 'Home',
     layout: pages.LAYOUT_WITH_NAVBAR,
-    components: { 
-        NotificationList,  
-        StudentView
+    middleware: AUTHENTICATION_MIDDLEWARE,
+    components: {
+        NotificationList,
+        StudentView,
     },
 })
 export default class Home extends Vue {

@@ -10,9 +10,34 @@
                     <h4 class="mb-2">{{ $t('login.email') }}</h4>
                     <v-text-field
                         type="email"
-                        v-model="credential.username"
+                        v-model="credential.email"
                         @input="resetError"
-                        :rules="formRules['username']"
+                        :rules="formRules['text']"
+                        solo
+                    ></v-text-field>
+                    <h4 class="mb-2">{{ $t('login.firstname') }}</h4>
+                    <v-text-field
+                        type="text"
+                        v-model="credential.firstName"
+                        @input="resetError"
+                        :rules="formRules['text']"
+                        solo
+                    ></v-text-field>
+
+                    <h4 class="mb-2">{{ $t('login.lastname') }}</h4>
+                    <v-text-field
+                        type="text"
+                        v-model="credential.lastName"
+                        @input="resetError"
+                        :rules="formRules['text']"
+                        solo
+                    ></v-text-field>
+                    <h4 class="mb-2">{{ $t('login.phone') }}</h4>
+                    <v-text-field
+                        type="number"
+                        v-model="credential.phoneNumber"
+                        @input="resetError"
+                        :rules="formRules['phone']"
                         solo
                     ></v-text-field>
                     <h4 class="mb-2">{{ $t('login.password') }}</h4>
@@ -62,16 +87,24 @@ import { SignupCredential } from '~/models/login/signup.model';
 })
 export default class SignupForm extends Vue {
     credential: SignupCredential = {
-        username: '',
-        password: '',
-        confirmPassword: '',
+        email: 'toto@gmail.com',
+        firstName: 'toto',
+        lastName: 'toto',
+        password: 'oooooooo',
+        phoneNumber: '0000000000',
+        profession: 'Tutor',
+        confirmPassword: 'oooooooo',
     };
 
     formRules: any = {
-        username: [
-            (v: any) => v !== '' || this.$t('form-error.empty-input'),
+        email: [
             (v: any) => v !== '' || this.$t('form-error.empty-input'),
             (v: any) => /.+@.+\..+/.test(v) || this.$t('form-error.incorrect-email-input'),
+        ],
+        text: [(v: any) => v !== '' || this.$t('form-error.empty-input')],
+        phone: [
+            (v: any) => v !== '' || this.$t('form-error.empty-input'),
+            (v: any) => (v !== '' && (v as string).length == 10) || this.$t('form-error.invalid-phone'),
         ],
         password: [(v: any) => v !== '' || this.$t('form-error.empty-input')],
         confirmPassword: [
