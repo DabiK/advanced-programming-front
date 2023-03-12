@@ -1,1 +1,0 @@
-window.__NUXT__=(function(a){return {staticAssetsBase:"\u002Fadvanced-programming-front\u002F_nuxt\u002Fstatic\u002F1678650608",layout:"layout-with-navbar",error:a,state:a,serverRendered:false,routePath:"\u002Fstudents\u002Fadd",config:{_app:{basePath:"\u002Fadvanced-programming-front\u002F",assetsPath:"\u002Fadvanced-programming-front\u002F_nuxt\u002F",cdnURL:a}}}}(null));
