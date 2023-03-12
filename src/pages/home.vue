@@ -22,10 +22,10 @@
                 class="student-container text-center"
             >
                 <v-avatar size="200">
-                    <img :src="student.picture" :alt="student.firstName" />
+                    <img :src="student.pictureUrl" :alt="student.firstName" />
                 </v-avatar>
                 <p>{{ `${student.firstName} ${student.lastName}` }}</p>
-                <p class="font-weight-bold">{{ student.class }}</p>
+                <p class="font-weight-bold">{{ student.currentClass }}</p>
             </v-col>
 
             <v-col @click="createStudent" class="student-container" cols="3">
@@ -48,10 +48,10 @@
                     class="student-container text-center"
                 >
                     <v-avatar size="200">
-                        <img :src="student.picture" :alt="student.firstName" />
+                        <img :src="student.pictureUrl" :alt="student.firstName" />
                     </v-avatar>
                     <p>{{ `${student.firstName} ${student.lastName}` }}</p>
-                    <p class="font-weight-bold">{{ student.class }}</p>
+                    <p class="font-weight-bold">{{ student.currentClass }}</p>
                 </v-col>
             </v-row>
         </template>

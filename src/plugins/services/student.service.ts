@@ -9,44 +9,59 @@ export class StudentService extends BaseService {
             schoolTutorId: 'isdjfoidsf',
             firstName: 'Allison',
             lastName: 'Kenter',
-            class: 'L3',
-            picture:
+            currentClass: 'L3',
+            pictureUrl:
                 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
             phoneNumber: '090880080898',
             email: 'allision@gmail.com',
-            description: 'description',
         },
         {
             id: 'psjfdoijfs',
             schoolTutorId: 'isdjfoidsf',
             firstName: 'Wilson',
             lastName: 'Herwitz',
-            class: 'M2',
-            picture:
+            currentClass: 'M2',
+            pictureUrl:
                 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80',
             phoneNumber: '090880080898',
             email: 'Wilson@gmail.com',
-            description: 'description',
         },
         {
             id: 'psjfdoijfs',
             schoolTutorId: 'isdjfoidsf',
             firstName: 'Ahmad',
             lastName: 'Saris',
-            class: 'M2',
-            picture:
+            currentClass: 'M2',
+            pictureUrl:
                 'https://images.unsplash.com/photo-1535931737580-a99567967ddc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2080&q=80',
             phoneNumber: '090880080898',
             email: 'Wilson@gmail.com',
-            description: 'description',
         },
     ];
 
     async getStudent(id: string) {
-        return StudentService.students[0];
+        try {
+            return (
+                await this.axios.get<Student>(`/students/${id}`, {
+                    withCredentials: true,
+                })
+            ).data;
+        } catch (err) {
+            console.debug(err);
+            throw err;
+        }
     }
     async getStudents() {
-        return StudentService.students;
+        try {
+            return (
+                await this.axios.get<Student[]>('/students', {
+                    withCredentials: true,
+                })
+            ).data;
+        } catch (err) {
+            console.debug(err);
+            throw err;
+        }
     }
 
     async getArchivedStudent() {
@@ -55,10 +70,11 @@ export class StudentService extends BaseService {
 
     async create(student: Student) {
         try {
-            //TODO: to be removed
-            student.id = uuidv4();
-            StudentService.students.push(student);
-            return student;
+            return (
+                await this.axios.post<Student>('/students', student, {
+                    withCredentials: true,
+                })
+            ).data;
         } catch (err) {
             console.debug(err);
             throw err;
@@ -68,17 +84,15 @@ export class StudentService extends BaseService {
     async archive(id: string) {}
 
     async edit(student: Student) {
-        //TODO: to be removed
-
-        const oldStudent = StudentService.students.find((s) => s.id === student.id);
-        if (!oldStudent) throw new Error();
-
-        oldStudent.email = student.email;
-        oldStudent.firstName = student.firstName;
-        oldStudent.lastName = student.lastName;
-        oldStudent.phoneNumber = student.phoneNumber;
-        oldStudent.picture = student.picture;
-
-        return oldStudent;
+        try {
+            return (
+                await this.axios.put<Student>(`/students/${student.id}`, student, {
+                    withCredentials: true,
+                })
+            ).data;
+        } catch (err) {
+            console.debug(err);
+            throw err;
+        }
     }
 }

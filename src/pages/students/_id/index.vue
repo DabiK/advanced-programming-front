@@ -2,7 +2,7 @@
     <div>
         <h1>Student details</h1>
         <div class="student-details">
-            <img :src="student?.picture" />
+            <img :src="student?.pictureUrl" />
             <div>
                 <ul>
                     <li>{{ $t('add-intern.form.lastname') }}: {{ student?.lastName }}</li>

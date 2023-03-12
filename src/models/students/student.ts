@@ -5,7 +5,6 @@ export interface Student {
     lastName: string;
     phoneNumber: string;
     email: string;
-    description: string;
-    class: string;
-    picture: string;
+    currentClass: string;
+    pictureUrl: string;
 }

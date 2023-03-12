@@ -29,7 +29,7 @@
                             <v-text-field
                                 type="email"
                                 v-model="student.email"
-                                :rules="formRules['text']"
+                                :rules="formRules['email']"
                                 solo
                             ></v-text-field>
                         </v-col>
@@ -39,7 +39,7 @@
                             <v-text-field
                                 type="text"
                                 v-model="student.phoneNumber"
-                                :rules="formRules['text']"
+                                :rules="formRules['phone']"
                                 solo
                             ></v-text-field>
                         </v-col>
@@ -48,7 +48,7 @@
                             <h4 class="mb-2">{{ $t('add-intern.form.class') }}</h4>
                             <v-text-field
                                 type="text"
-                                v-model="student.class"
+                                v-model="student.currentClass"
                                 :rules="formRules['text']"
                                 solo
                             ></v-text-field>
@@ -56,14 +56,14 @@
 
                         <v-col md="12" class="text-center">
                             <h4 class="mb-2">{{ $t('add-intern.form.picture') }}</h4>
-                            <v-file-input
-                                show-size
-                                :label="$t('add-intern.form.select-image')"
-                                accept="image/*"
-                                @change="selectImage"
-                            ></v-file-input>
+                            <v-text-field
+                                type="text"
+                                v-model="student.pictureUrl"
+                                :rules="formRules['text']"
+                                solo
+                            ></v-text-field>
                             <v-avatar size="200">
-                                <img :src="previewImage" />
+                                <img :src="student.pictureUrl" />
                             </v-avatar>
                         </v-col>
                     </v-row>
@@ -97,7 +97,15 @@ export default class AddInternForm extends Vue {
     previewImage: string = '';
 
     formRules: any = {
+        email: [
+            (v: any) => v !== '' || this.$t('form-error.empty-input'),
+            (v: any) => /.+@.+\..+/.test(v) || this.$t('form-error.incorrect-email-input'),
+        ],
         text: [(v: any) => v !== '' || this.$t('form-error.empty-input')],
+        phone: [
+            (v: any) => v !== '' || this.$t('form-error.empty-input'),
+            (v: any) => (v !== '' && (v as string).length == 10) || this.$t('form-error.invalid-phone'),
+        ],
     };
 
     @PropSync('error', {
@@ -109,12 +117,6 @@ export default class AddInternForm extends Vue {
         if ((this.$refs.form as VForm).validate()) {
             this.create();
         }
-    }
-
-    selectImage(image) {
-        // console.log(image) // File type;
-        this.previewImage = URL.createObjectURL(image);
-        this.student.picture = URL.createObjectURL(image);
     }
 
     @Emit('submit')

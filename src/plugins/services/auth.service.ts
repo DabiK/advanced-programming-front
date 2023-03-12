@@ -21,7 +21,6 @@ export class AuthService extends BaseService {
     async signup(credential: SignupCredential): Promise<boolean> {
         try {
             await this.axios.post('/register', credential);
-            console.log(credential);
             return true;
         } catch (err) {
             console.debug(err);
