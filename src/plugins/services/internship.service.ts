@@ -63,10 +63,10 @@ export class InternshipService extends BaseService {
         }
     }
 
-    async getStudentInternships(studentId: string) {
+    async getStudentInternships(studentId: string) : Promise<Internship[]> {
         try {
             return (
-                await this.axios.get<Internship>(`/students/${studentId}/internships/`, {
+                await this.axios.get<Internship[]>(`/students/${studentId}/internships/`, {
                     withCredentials: true,
                 })
             ).data;

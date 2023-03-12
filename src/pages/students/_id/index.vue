@@ -63,19 +63,31 @@ export default class StudentView extends Vue {
     internships!: Internship[];
 
     async created() {
-        const { id } = this.$route.params;
-
-        this.student = await this.$service.student.getStudent(id);
-        if (!this.student) {
-            return this.redirectToHome();
+        try {
+            const { id } = this.$route.params;
+    
+            this.student = await this.$service.student.getStudent(id);
+            if (!this.student) {
+                return this.redirectToHome();
+            }
+    
+            this.internships = await this.$service.internship.getStudentInternships(id);
         }
-
-        this.internships = await this.$service.internship.getStudentInternships(id);
+        catch (e) {
+            console.debug(e);
+            this.$toast.error(this.$t('error.500'));
+        }
     }
 
     archiveStudent() {
-        this.$service.student.archive(this.student.id);
-        this.redirectToHome();
+        try {
+            this.$service.student.archive(this.student.id);
+            this.redirectToHome();
+        }
+        catch (e) {
+            console.debug(e);
+            this.$toast.error(this.$t('error.500'));
+        }
     }
 
     redirectToHome() {

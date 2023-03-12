@@ -123,5 +123,8 @@
       "subtitle": "Task to do, check or valid with {name}",
       "web-survey": "Web survey"
     }
+  },
+  "error": {
+    "500": "An error has occured. Please retry later"
   }
 }

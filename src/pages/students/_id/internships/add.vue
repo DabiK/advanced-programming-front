@@ -22,18 +22,24 @@ import { pages, pagesPath } from '~/utils/page';
 })
 export default class AddInternship extends Vue {
     async addInternship(addInternshipDTO: AddInternshipDTO) {
-        const { studentId } = this.$route.params;
-        
-        const responseAdding = await this.$service.internship.create(studentId, addInternshipDTO);
-        if (!responseAdding) {
-            this.$toast.error(this.$t('add-internship.form.error', { companyName: addInternshipDTO.companyName }));
-            return;
+        try {
+            const { studentId } = this.$route.params;
+            
+            const responseAdding = await this.$service.internship.create(studentId, addInternshipDTO);
+            if (!responseAdding) {
+                this.$toast.error(this.$t('add-internship.form.error', { companyName: addInternshipDTO.companyName }));
+                return;
+            }
+    
+            this.$toast.success(this.$t('add-internship.form.success'));
+            this.$router.push({
+                path: pagesPath.STUDENT_PAGE(studentId),
+            });
         }
-
-        this.$toast.success(this.$t('add-internship.form.success'));
-        this.$router.push({
-            path: pagesPath.STUDENT_PAGE(studentId),
-        });
+        catch (e) {
+            console.debug(e);
+            this.$toast.error(this.$t('error.500'));
+        }
     }
 }
 </script>

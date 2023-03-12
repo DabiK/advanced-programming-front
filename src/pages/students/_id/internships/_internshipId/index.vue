@@ -6,7 +6,7 @@
                     <v-row>
                         <v-col>
                             <v-avatar size="60">
-                                <img :src="student.picture" :alt="student.firstName" />
+                                <img :src="student.pictureUrl" :alt="student.firstName" />
                             </v-avatar>
                         </v-col>
 

@@ -25,12 +25,17 @@ export default class EditStudent extends Vue {
     beforeEditingStudent!: Student;
 
     async mounted() {
-        const { id } = this.$route.params;
-
-        this.beforeEditingStudent = await this.$service.student.getStudent(id);
-        console.log('1');
-        if (!this.beforeEditingStudent) {
-            return this.redirectToHome();
+        try {
+            const { id } = this.$route.params;
+    
+            this.beforeEditingStudent = await this.$service.student.getStudent(id);
+            console.log('1');
+            if (!this.beforeEditingStudent) {
+                return this.redirectToHome();
+            }
+        }
+        catch (e) {
+            this.$toast.error(this.$t('error.500'));
         }
     }
 
@@ -49,6 +54,7 @@ export default class EditStudent extends Vue {
                 path: pagesPath.STUDENT_PAGE(id),
             });
         } catch (e) {
+            console.debug(e);
             this.$toast.error(this.$t('edit-intern.form.failed'));
         }
     }

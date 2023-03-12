@@ -123,5 +123,8 @@
       "subtitle": "Tâche à faire, vérifier ou valider avec {name}",
       "web-survey": "Sondage Web"
     }
+  },
+  "error": {
+    "500": "Une erreur est survenue. Nous sommes désolés pour la gêne occasionnée. Veuillez réessayer plus tard"
   }
 }
