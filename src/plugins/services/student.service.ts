@@ -1,6 +1,8 @@
 import { Student } from '~/models/students/student';
 import { v4 as uuidv4 } from 'uuid';
-export class StudentService {
+import { BaseService } from './base.service';
+
+export class StudentService extends BaseService {
     static students: Student[] = [
         {
             id: 'psjfdoijfs',
@@ -63,22 +65,20 @@ export class StudentService {
         }
     }
 
-    async archive(id: string) {
-        
-    }
+    async archive(id: string) {}
 
     async edit(student: Student) {
         //TODO: to be removed
 
-        const oldStudent = StudentService.students.find(s => s.id === student.id)
-        if (!oldStudent) throw new Error()
+        const oldStudent = StudentService.students.find((s) => s.id === student.id);
+        if (!oldStudent) throw new Error();
 
-        oldStudent.email = student.email
-        oldStudent.firstName = student.firstName
-        oldStudent.lastName = student.lastName
-        oldStudent.phoneNumber = student.phoneNumber
-        oldStudent.picture = student.picture
+        oldStudent.email = student.email;
+        oldStudent.firstName = student.firstName;
+        oldStudent.lastName = student.lastName;
+        oldStudent.phoneNumber = student.phoneNumber;
+        oldStudent.picture = student.picture;
 
-        return oldStudent
+        return oldStudent;
     }
 }

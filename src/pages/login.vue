@@ -28,10 +28,12 @@ import { LoginCredential } from '~/models/login/credential.model';
 import { registerModule } from '~/store/store-helper';
 import { USER_STATE_NAME, UserState } from '~/store/user-state';
 import { pages, pagesPath } from '~/utils/page';
+import { HOME_REDIRECTION_MIDDLEWARE } from '~/middleware/home-redirection';
 
 @Component({
     name: 'Login',
     layout: pages.LAYOUT_LOGIN,
+    middleware: HOME_REDIRECTION_MIDDLEWARE,
     components: {
         LoginForm,
         LoginPageRightImage,

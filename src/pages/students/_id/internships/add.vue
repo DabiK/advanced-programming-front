@@ -1,33 +1,34 @@
 <template>
     <div class="add-internship-container">
-        <h1>{{$t("add-internship.btn") }}</h1>
-        <add-internship-form @submit="addInternship"/>
+        <h1>{{ $t('add-internship.btn') }}</h1>
+        <add-internship-form @submit="addInternship" />
     </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Emit, PropSync } from 'nuxt-property-decorator';
 import AddInternshipForm from '~/components/internship/add-internship-form.vue';
+import { AUTHENTICATION_MIDDLEWARE } from '~/middleware/authentication';
 import { AddInternshipDTO } from '~/models/internships/add-internship-dto';
 import { pages, pagesPath } from '~/utils/page';
 
 @Component({
-    name: "addInternship",
+    name: 'addInternship',
     layout: pages.LAYOUT_WITH_NAVBAR,
-    components: { 
-        AddInternshipForm
+    middleware: AUTHENTICATION_MIDDLEWARE,
+    components: {
+        AddInternshipForm,
     },
 })
 export default class AddInternship extends Vue {
-
     async addInternship(addInternshipDTO: AddInternshipDTO) {
-        const responseAdding = await this.$service.internship.create(addInternshipDTO)
+        const responseAdding = await this.$service.internship.create(addInternshipDTO);
         if (!responseAdding) {
             this.$toast.error(this.$t('add-internship.form.error', { companyName: addInternshipDTO.companyName }));
-            return
+            return;
         }
-        
-        const { id } = this.$route.params
+
+        const { id } = this.$route.params;
 
         this.$toast.success(this.$t('add-internship.form.success'));
         this.$router.push({
@@ -35,7 +36,6 @@ export default class AddInternship extends Vue {
         });
     }
 }
-
 </script>
 
 <style scoped>

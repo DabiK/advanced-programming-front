@@ -35,8 +35,9 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'nuxt-property-decorator';
-import { USER_STATE_NAME } from '~/store/user-state';
+import { Vue, Component, Prop, getModule } from 'nuxt-property-decorator';
+import { UserState, USER_STATE_NAME } from '~/store/user-state';
+import { pagesPath } from '~/utils/page';
 
 @Component({
     name: 'navbar',
@@ -46,10 +47,18 @@ export default class Navbar extends Vue {
     mini: Boolean = true;
     drawer = false;
     mounted() {
+        this.$store.registerModule(USER_STATE_NAME, UserState);
         this.userState = this.$store.state[USER_STATE_NAME];
     }
 
-    logout() {}
+    async logout() {
+        const userState = getModule(UserState, this.$store);
+        userState.updateToken('');
+        userState.updateUser({});
+        await this.$router.push({
+            path: pagesPath.LOGIN_PAGE_PATH,
+        });
+    }
 
     get name() {
         return `${this.$store.state[USER_STATE_NAME]?.user.firstName} ${this.$store.state[USER_STATE_NAME]?.user.lastName} `;

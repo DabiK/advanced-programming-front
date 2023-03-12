@@ -1,6 +1,7 @@
 import { Notification } from '~/models/notifications/notification';
+import { BaseService } from './base.service';
 
-export class NotificationService {
+export class NotificationService extends BaseService {
     static notifications: Notification[] = [
         {
             name: 'Soutenance - Allison',

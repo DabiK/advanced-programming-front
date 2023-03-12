@@ -1,5 +1,9 @@
 export interface SignupCredential {
-    username: string;
+    firstName: string;
+    lastName: string;
+    phoneNumber: string;
+    email: string;
+    profession: string;
     password: string;
     confirmPassword: string;
 }

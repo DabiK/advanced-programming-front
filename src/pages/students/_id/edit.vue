@@ -1,34 +1,36 @@
 <template>
     <div class="edit-intern-container">
-        <h1>{{ $t("student.edit-profile") }}</h1>
-        <edit-student-form :beforeEditingStudent="beforeEditingStudent" @submit="editStudent"/>
+        <h1>{{ $t('student.edit-profile') }}</h1>
+        <edit-student-form :beforeEditingStudent="beforeEditingStudent" @submit="editStudent" />
     </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Inject } from 'nuxt-property-decorator';
 import EditStudentForm from '~/components/intern/edit-intern-form.vue';
+import { AUTHENTICATION_MIDDLEWARE } from '~/middleware/authentication';
 import { Student } from '~/models/students/student';
 import { pages, pagesPath } from '~/utils/page';
 
 @Component({
-    name: "editIntern",
+    name: 'editIntern',
     layout: pages.LAYOUT_WITH_NAVBAR,
-    components: { 
-        EditStudentForm
+    middleware: AUTHENTICATION_MIDDLEWARE,
+    components: {
+        EditStudentForm,
     },
 })
 export default class EditStudent extends Vue {
     @Inject()
-    beforeEditingStudent!: Student
+    beforeEditingStudent!: Student;
 
     async mounted() {
-        const { id } = this.$route.params
+        const { id } = this.$route.params;
 
         this.beforeEditingStudent = await this.$service.student.getStudent(id);
-        console.log("1")
+        console.log('1');
         if (!this.beforeEditingStudent) {
-            return this.redirectToHome()
+            return this.redirectToHome();
         }
     }
 
@@ -40,19 +42,17 @@ export default class EditStudent extends Vue {
 
     async editStudent(student: Student) {
         try {
-            await this.$service.student.edit(student)
-            const { id } = this.$route.params
+            await this.$service.student.edit(student);
+            const { id } = this.$route.params;
             this.$toast.success(this.$t('edit-intern.form.success'));
             this.$router.push({
                 path: pagesPath.STUDENT_PAGE(id),
             });
-        }
-        catch (e) {
+        } catch (e) {
             this.$toast.error(this.$t('edit-intern.form.failed'));
         }
     }
 }
-
 </script>
 
 <style scoped>

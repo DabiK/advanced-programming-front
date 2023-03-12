@@ -6,10 +6,10 @@ import { VisitService } from './visit.service';
 
 export default (context: any, inject: any) => {
     inject('service', {
-        auth: new AuthService(),
-        notification: new NotificationService(),
-        student: new StudentService(),
-        internship: new InternshipService(),
-        visit: new VisitService(),
+        auth: new AuthService(context.$axios),
+        notification: new NotificationService(context.$axios),
+        student: new StudentService(context.$axios),
+        internship: new InternshipService(context.$axios),
+        visit: new VisitService(context.$axios),
     });
 };

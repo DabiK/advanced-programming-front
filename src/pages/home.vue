@@ -66,13 +66,15 @@ import { Notification } from '~/models/notifications/notification';
 import { Student } from '~/models/students/student';
 import StudentView from './students/_id/index.vue';
 import { pages, pagesPath } from '~/utils/page';
+import { AUTHENTICATION_MIDDLEWARE } from '~/middleware/authentication';
 
 @Component({
     name: 'Home',
     layout: pages.LAYOUT_WITH_NAVBAR,
-    components: { 
-        NotificationList,  
-        StudentView
+    middleware: AUTHENTICATION_MIDDLEWARE,
+    components: {
+        NotificationList,
+        StudentView,
     },
 })
 export default class Home extends Vue {

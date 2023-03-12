@@ -10,12 +10,16 @@
     "signin": "Sign in",
     "manage-your-students": "Manage your students",
     "signup": "Create an account",
-    "confirm-password": "Confirm Password"
+    "confirm-password": "Confirm Password",
+    "firstname": "Firstname",
+    "lastname": "Lastname",
+    "phone": "Phone"
   },
   "form-error": {
     "empty-input": "This input should not be empty",
     "incorrect-email-input": "This field has to be an email",
-    "incorrect-confirm-password": "Confirm password and password has to be identical"
+    "incorrect-confirm-password": "Confirm password and password has to be identical",
+    "invalid-phone": "The phone number should have 10 digit"
   },
   "errors": {
     "invalid-credential": "Invalid email or password ",
@@ -78,7 +82,7 @@
       "companyName": "Company",
       "startingDate": "Internship starting date",
       "endingDate": "Internship ending date",
-      "error": "The internship in {companyName} could not be created. Please retry later", 
+      "error": "The internship in {companyName} could not be created. Please retry later",
       "success": "The internship has been well added"
     }
   },

@@ -10,12 +10,16 @@
     "signin": "S'autentifier",
     "manage-your-students": "Gérez vos élèves",
     "signup": "Créer un compte",
-    "confirm-password": "Confirmez le mot de passe"
+    "confirm-password": "Confirmez le mot de passe",
+    "firstname": "Prénom",
+    "lastname": "Nom de famille",
+    "phone": "Téléphone"
   },
   "form-error": {
     "empty-input": "Cette entrée ne doit pas être vide",
     "incorrect-email-input": "Ce champ doit être un email",
-    "incorrect-confirm-password": "Confirmer le mot de passe et le mot de passe doit être identique"
+    "incorrect-confirm-password": "Confirmer le mot de passe et le mot de passe doit être identique",
+    "invalid-phone": "Le numéro de téléphone doit avoir 10 chiffres"
   },
   "errors": {
     "invalid-credential": "",
@@ -41,7 +45,7 @@
     "student-list": "Liste de mes étudiants",
     "see-archived-student": "Voir les étudiants archivés",
     "hide-archived-student": "Masquer les étudiants archivés"
-  }, 
+  },
   "student": {
     "in-progress": "En cours",
     "ended": "Fini",

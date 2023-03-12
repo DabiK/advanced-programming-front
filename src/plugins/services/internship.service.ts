@@ -1,8 +1,9 @@
 import { AddInternshipDTO } from '~/models/internships/add-internship-dto';
 import { Internship } from '../../models/internships/internship';
 import { v4 as uuidv4 } from 'uuid';
+import { BaseService } from './base.service';
 
-export class InternshipService {
+export class InternshipService extends BaseService {
     static internships: Internship[] = [
         {
             id: '123',
@@ -55,24 +56,24 @@ export class InternshipService {
 
     async getStudentInternships(studentId: string) {
         //TODO: to be removed
-        return InternshipService.internships
+        return InternshipService.internships;
     }
 
     async create(addInternshipDTO: AddInternshipDTO) {
         //TODO: to bre removed
-        const internship : Internship = {
+        const internship: Internship = {
             id: uuidv4(),
             company: {
                 id: uuidv4(),
                 name: addInternshipDTO.companyName,
-                address: addInternshipDTO.companyAddress
+                address: addInternshipDTO.companyAddress,
             },
             specificationsDone: false,
             startingDate: new Date(addInternshipDTO.startingDate),
-            endingDate: new Date(addInternshipDTO.endingDate)
-        }
+            endingDate: new Date(addInternshipDTO.endingDate),
+        };
 
-        InternshipService.internships.push(internship)
-        return internship
+        InternshipService.internships.push(internship);
+        return internship;
     }
 }
